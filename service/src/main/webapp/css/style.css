@@ -1,0 +1,73 @@
+/************ Header ************/
+.header {
+	position: fixed;
+	top: 0px;
+	margin-left: 0px;
+	margin-bottom: 130px;
+	width: 100%;
+	height: 55px;
+	border-top: solid 4px rgba(101, 228, 157, 0.7);
+	border-bottom: solid 1px #eaeaea;
+	background-color: rgba(255,255,255,0.7);
+	z-index: 500;
+}
+
+.header a { color: #999; }
+
+.search input{ margin-right: 10px; }
+
+
+/************ Login & Register ************/
+
+.form-login,
+.form-register {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 140px;
+  margin-bottom: 180px;
+}
+
+.form-login .form-login-heading,
+.form-register .form-register-heading,
+.form-login .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-login .form-control,
+.form-register .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-login .form-control:focus,
+.form-register .form-control:focus { z-index: 2; }
+
+.form-login input[type="text"],
+.form-register input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"],
+.form-register input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-register input[type="password"] {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login .checkbox,
+.form-register button[type="submit"] { margin-top: 10px; }
+
+.form-login .checkbox { font-weight: normal; }
+

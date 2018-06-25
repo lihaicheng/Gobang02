@@ -1,0 +1,14 @@
+#common ignore
+.idea/
+.svn/
+*.iml
+.settings/
+.classpath
+.project
+/lib/
+/logs/
+settings.gradle
+
+#maven ignore
+src/main/webapp/WEB-INF/classes/
+*/target/
