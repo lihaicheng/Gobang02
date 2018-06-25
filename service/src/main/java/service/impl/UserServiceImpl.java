@@ -1,19 +1,27 @@
 package service.impl;
 
+import dao.LoginSid;
 import dao.UserDao;
+import dao.impl.LoginSidImpl;
 import dao.impl.UserDaoImpl;
 import entity.UserEntity;
 import service.UserService;
+import tool.Constants;
 import tool.MD5Tools;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
+    LoginSid loginSid = new LoginSidImpl();
 
     @Override
     public int reg(UserEntity user) {
-        return 0;
+        if (user != null) {
+            user.setPassword(MD5Tools.MD5(user.getPassword()));
+            return userDao.reg(user);
+        }
+        return Constants.REG_unknown_error;
     }
 
     @Override
@@ -26,8 +34,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity getUser(String account) {
+    public void saveSid(int uid, String sid) {
+        sid = MD5Tools.MD5(sid);
+        loginSid.saveSid(uid, sid);
+    }
+
+    @Override
+    public UserEntity loginForSID(String account, String SID) {
+        if (account == null || SID == null) {
+            return null;
+        }
+        SID = MD5Tools.MD5(SID);
+        UserEntity user = getUser(account);
+        System.out.println(SID + "," + user.getUid());
+        if (user != null) {
+            return loginSid.login(user.getUid(), SID);
+        }
         return null;
+    }
+
+    @Override
+    public UserEntity getUser(String account) {
+        return userDao.getUser(account);
     }
 
     @Override
@@ -62,6 +90,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity getByUid(int uid) {
-        return null;
+        return userDao.getByUid(uid);
     }
 }

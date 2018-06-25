@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import tool.Constants;
 
 import java.util.List;
 
@@ -29,26 +30,46 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int reg(UserEntity user) {
-        return 0;
+        init();
+        // 1、得到Query对象，并写入hql语句
+        session.save(user);
+        try {
+            transaction.commit();
+            return Constants.REG_success;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Constants.REG_unknown_error;
     }
 
     @Override
     public UserEntity login(String account, String password) {
         init();
         // 1、得到Query对象，并写入hql语句
-        Query query = session.createQuery("from UserEntity where username = ?");
+        Query query = session.createQuery("from UserEntity where username = ? and password = ?");
         query.setParameter(0, account);
+        query.setParameter(1, password);
         List<UserEntity> users = query.list();
 
-        if (users == null) return null;
-        for (UserEntity user : users) {
-            return user;
+        if (users != null) {
+            for (UserEntity user : users) {
+                return user;
+            }
         }
         return null;
     }
 
     @Override
     public UserEntity getUser(String account) {
+        init();
+        Query query = session.createQuery("from UserEntity where username=?");
+        query.setParameter(0, account);
+        List<UserEntity> users = query.list();
+        if (users != null) {
+            for (UserEntity user : users) {
+                return user;
+            }
+        }
         return null;
     }
 
@@ -89,6 +110,18 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public UserEntity getByUid(int uid) {
+        init();
+        // 1、得到Query对象，并写入hql语句
+        //  Query query = session.createQuery("select new entity.UserEntity(uid,username,email,phone,sign,type,regTime,grade) from UserEntity where uid = ?");
+        Query query = session.createQuery("from UserEntity where uid = ?");
+        query.setParameter(0, uid);
+        List<UserEntity> users = query.list();
+
+        if (users != null) {
+            for (UserEntity user : users) {
+                return user;
+            }
+        }
         return null;
     }
 }

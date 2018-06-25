@@ -11,6 +11,7 @@
   <modules>
     <module>service</module>
       <module>common</module>
+      <module>webuser</module>
   </modules>
 
   <name>Gobang03</name>

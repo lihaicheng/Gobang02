@@ -25,6 +25,21 @@ public interface UserService {
     public UserEntity login(String account, String password);
 
     /**
+     * 保存用户登录数据
+     *
+     * @param uid
+     * @param sid
+     */
+    public void saveSid(int uid, String sid);
+
+    /**
+     * 用户根据SID登录
+     *
+     * @author Chao
+     */
+    public UserEntity loginForSID(String account, String SID);
+
+    /**
      * 根据账号获得用户，主要用于找回密码
      *
      * @author Chao
@@ -44,7 +59,7 @@ public interface UserService {
      *
      * @author Chao
      */
-    public List<UserEntity>  getAll(UserEntity user);
+    public List<UserEntity> getAll(UserEntity user);
 
     /**
      * 是否存在此用户名
@@ -56,24 +71,22 @@ public interface UserService {
 
     /**
      * 是否存在此手机号
-     *
      */
     public boolean isHavePhone(String phone);
 
     /**
      * 是否存在此邮箱
-     *
      */
     public boolean isHaveEmail(String email);
 
     /**
      * 是否存在此账号
-     *
      */
     public boolean isHaveAccount(String account);
 
     /**
      * 根据uid查询User
+     *
      * @param uid
      * @return
      */

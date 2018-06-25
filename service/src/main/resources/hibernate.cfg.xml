@@ -29,5 +29,6 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="entity.UserEntity"></mapping>
+        <mapping class="entity.LoginSidEntity"></mapping>
     </session-factory>
 </hibernate-configuration>

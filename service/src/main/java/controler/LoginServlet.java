@@ -7,13 +7,12 @@ import service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
-@WebServlet(urlPatterns = {"/webuser/login.action"})
+@WebServlet(urlPatterns = {"/webUser/login.action", "/webUser/getUser.do"})
 public class LoginServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -26,19 +25,63 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlStr = req.getRequestURI();
         System.out.println("urlStr:" + urlStr);
-        if (urlStr.contains("webuser/login.action")) {
+        if (urlStr.contains("webUser/login.action")) {
             login(req, resp);
+        } else if (urlStr.contains("webUser/getUser.do")) {
+            getUser(req, resp);
+        } else {
+            resp.getWriter().println("请检查大小写！");
+        }
+    }
+
+    private void getUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = CookieUtils.getCookieValue(req, "username");
+        String sid = CookieUtils.getCookieValue(req, "SID");
+
+        UserEntity user = userService.loginForSID(username, sid);
+        System.out.println(sid);
+        if (user != null) {
+            showSuccess(req, resp, user);
+        } else {
+            showError(req, resp);
         }
     }
 
     private void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        PrintWriter out = resp.getWriter();
+        HttpSession session = req.getSession();
         String account = req.getParameter("account");
         String password = req.getParameter("password");
         UserEntity user = userService.login(account, password);
-        //登录成功，返回用户信息
+        if (user != null) {
+            //保存登录sid
+            userService.saveSid(user.getUid(), session.getId());
+            showSuccess(req, resp, user);
+        } else {
+            showError(req, resp);
+        }
+    }
+
+    /**
+     * 用户登录失败
+     */
+    private void showError(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //登录失败，返回用户信息
+        Map<String, Object> map = new HashMap<>();
+        map.put("isLogin", false);
+        map.put("SID", req.getSession().getId());
         Gson gson = new Gson();
-        String json = gson.toJson(user);
-        out.println(json);
+        String json = gson.toJson(map);
+        resp.getWriter().println(json);
+    }
+
+    private void showSuccess(HttpServletRequest req, HttpServletResponse resp, UserEntity user) throws IOException {
+        //登录成功，返回用户信息
+        Map<String, Object> map = new HashMap<>();
+        map.put("isLogin", true);
+        map.put("SID", req.getSession().getId());
+        map.put("user", user);
+        Gson gson = new Gson();
+        String json = gson.toJson(map);
+        resp.getWriter().println(json);
     }
 }

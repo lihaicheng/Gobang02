@@ -16,8 +16,21 @@ public class UserEntity {
     private String sign;
     private String type;
     private Timestamp regTime;
-    private String userpass;
     private Integer grade;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(int uid, String username, String email, String phone, String sign, String type, Timestamp regTime, Integer grade) {
+        this.uid = uid;
+        this.username = username;
+        this.email = email;
+        this.phone = phone;
+        this.sign = sign;
+        this.type = type;
+        this.regTime = regTime;
+        this.grade = grade;
+    }
 
     @Id
     @Column(name = "uid")
@@ -118,16 +131,6 @@ public class UserEntity {
     public int hashCode() {
 
         return Objects.hash(uid, username, password, email, phone, sign, type, regTime);
-    }
-
-    @Basic
-    @Column(name = "userpass")
-    public String getUserpass() {
-        return userpass;
-    }
-
-    public void setUserpass(String userpass) {
-        this.userpass = userpass;
     }
 
     @Basic
