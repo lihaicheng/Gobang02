@@ -76,12 +76,12 @@ function isHaveUsername(account) {
         success: function (data) {
             console.log(data);
             if (data.isHave == false) {//账号未注册
-                success($(this), 0);
+                success(account, 0);
             } else {
-                fail($(this), 0, '用户名已存在！')
+                fail(account, 0, '用户名已存在！')
             }
         }, error: function () {
-            fail($(this), 0, '网络错误，无法验证！')
+            fail(account, 0, '网络错误，无法验证！')
         }
     });
 }
@@ -146,12 +146,12 @@ function isHavePhoneNum(account) {
         success: function (data) {
             console.log(data);
             if (data.isHave == false) {//账号未注册
-                success($(this), 3);
+                success(account, 3);
             } else {
-                fail($(this), 3, '手机号码已注册！')
+                fail(account, 3, '手机号码已注册！')
             }
         }, error: function () {
-            fail($(this), 3, '网络错误，无法验证！')
+            fail(account, 3, '网络错误，无法验证！')
         }
     });
 }
