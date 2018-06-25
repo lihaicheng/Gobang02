@@ -100,6 +100,20 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean isHaveAccount(String account) {
+        init();
+        // 1、得到Query对象，并写入hql语句
+        //  Query query = session.createQuery("select new entity.UserEntity(uid,username,email,phone,sign,type,regTime,grade) from UserEntity where uid = ?");
+        Query query = session.createQuery("from UserEntity where username=? or phone=? or email=?");
+        query.setParameter(0, account);
+        query.setParameter(1, account);
+        query.setParameter(2, account);
+        List<UserEntity> users = query.list();
+
+        if (users != null) {
+            for (UserEntity user : users) {
+                return true;
+            }
+        }
         return false;
     }
 

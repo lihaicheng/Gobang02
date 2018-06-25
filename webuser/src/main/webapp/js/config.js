@@ -4,6 +4,7 @@ _settings = {
     url: {
         ajaxLogin: "service/webUser/login.action",
         ajaxReg: "service/webUser/register.action",
+        ajaxRegVer: "service/webUser/regVer.do",
         ajaxGetUser: "service/webUser/getUser.do",
         htmlLogin: "webUser/login.html",
         htmlUserCenter: "webUser/userCenter.html"

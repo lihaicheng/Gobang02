@@ -15,10 +15,18 @@ function regAjax(from) {
         success: function (data) {
             console.log(data);
             if (data.isReg) {//注册成功
-
+                $('#myModal').find("#title").text("注册成功！");
+                $('#myModal').find("#content").text("你已注册成功，注册信息已发送道破你的邮箱。");
+                $('#myModal').modal('show');
             } else {
-
+                $('#myModal').find("#title").text("注册失败！");
+                $('#myModal').find("#content").text("拒绝注册，请重试！");
+                $('#myModal').modal('show');
             }
+        }, error: function () {
+            $('#myModal').find("#title").text("网络检查！");
+            $('#myModal').find("#content").text("网络错误，请检查网络后重试！");
+            $('#myModal').modal('show');
         }
     });
 }
@@ -43,16 +51,40 @@ function fail(Obj, counter, msg) {
 }
 
 // 用户名匹配
-$('.container').find('#username').change(function () {
+$('.container').find('#username').change(usernameVar).blur(usernameVar);
+
+function usernameVar() {
     if (regUsername.test($(this).val())) {
-        success($(this), 0);
+        isHaveUsername($(this));
     } else if ($(this).val().length < 5) {
         fail($(this), 0, '用户名太短，不能少于5个字符');
     } else {
         fail($(this), 0, '用户名只能为英文数字和下划线,且不能以数字开头')
     }
+}
 
-});
+/**
+ *验证用户名是否存在
+ * @param account
+ */
+function isHaveUsername(account) {
+    $.ajax({
+        type: "post",
+        url: _settings.webUrl + _settings.url.ajaxRegVer,
+        data: "account=" + account.val(),
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            if (data.isHave == false) {//账号未注册
+                success($(this), 0);
+            } else {
+                fail($(this), 0, '用户名已存在！')
+            }
+        }, error: function () {
+            fail($(this), 0, '网络错误，无法验证！')
+        }
+    });
+}
 
 // 密码匹配
 
@@ -66,9 +98,7 @@ function atLeastTwo(password) {
 }
 
 $('.container').find('#password').change(function () {
-
     password = $(this).val();
-
     if ($(this).val().length < 6) {
         fail($(this), 1, '密码太短，不能少于6个字符');
     } else {
@@ -83,25 +113,48 @@ $('.container').find('#password').change(function () {
 
 // 再次输入密码校验
 $('.container').find('#passwordConfirm').change(function () {
-
     if ($(this).val() == password) {
         success($(this), 2);
     } else {
-
         fail($(this), 2, '两次输入的密码不一致');
     }
-
 });
 
 // 手机号码
 var regPhoneNum = /^[0-9]{11}$/
-$('.container').find('#phoneNum').change(function () {
+$('.container').find('#phoneNum').change(phoneNumVar).blur(phoneNumVar);
+
+//手机号码验证
+function phoneNumVar() {
     if (regPhoneNum.test($(this).val())) {
-        success($(this), 3);
+        isHavePhoneNum($(this));
     } else {
         fail($(this), 3, '手机号码只能为11位数字');
     }
-});
+}
+
+/**
+ *验证手机号是否存在
+ * @param account
+ */
+function isHavePhoneNum(account) {
+    $.ajax({
+        type: "post",
+        url: _settings.webUrl + _settings.url.ajaxRegVer,
+        data: "account=" + account.val(),
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            if (data.isHave == false) {//账号未注册
+                success($(this), 3);
+            } else {
+                fail($(this), 3, '手机号码已注册！')
+            }
+        }, error: function () {
+            fail($(this), 3, '网络错误，无法验证！')
+        }
+    });
+}
 
 $('#submit').click(function (e) {
     e.preventDefault();
@@ -117,6 +170,7 @@ $('#submit').click(function (e) {
         }
     }
 });
+
 //全局Ajax错误处理
 $(document).ajaxError(function (event, xhr, options, exc) {
     /*错误信息处理*/
@@ -125,5 +179,4 @@ $(document).ajaxError(function (event, xhr, options, exc) {
     console.log(xhr.readyState);
     console.log(xhr.statusText);
     console.log(exc);
-
 });

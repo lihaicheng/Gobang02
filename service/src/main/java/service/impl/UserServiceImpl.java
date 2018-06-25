@@ -85,7 +85,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isHaveAccount(String account) {
-        return false;
+        if (account != null) {
+            return userDao.isHaveAccount(account);
+        }
+        return true;
     }
 
     @Override

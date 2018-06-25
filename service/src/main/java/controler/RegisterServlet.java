@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/webUser/register.action"})
+@WebServlet(urlPatterns = {"/webUser/register.action", "/webUser/regVer.do"})
 public class RegisterServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -30,8 +30,29 @@ public class RegisterServlet extends HttpServlet {
         System.out.println("urlStr:" + urlStr);
         if (urlStr.contains("webUser/register.action")) {
             register(req, resp);
+        } else if (urlStr.contains("webUser/regVer.do")) {
+            regVer(req, resp);
         }
     }
+
+    /**
+     * 验证账号是否存在
+     *
+     * @param req
+     * @param resp
+     */
+    private void regVer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String account = req.getParameter("account");
+        System.out.println(account);
+        Boolean isHave = userService.isHaveAccount(account);
+        Map<String, Object> map = new HashMap<>();
+        map.put("isHave", isHave);
+        map.put("account", account);
+        Gson gson = new Gson();
+        String json = gson.toJson(map);
+        resp.getWriter().println(json);
+    }
+
 
     private void register(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");

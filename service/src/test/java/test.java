@@ -15,7 +15,7 @@ public class test {
     public void test() {
         //   userService.loginForSID("chao", "1D044F76572FED2C1C6B83AB7F4BB742");
         init();
-        userService.reg(userEntity);
+        System.out.println(userService.isHaveAccount("admin"));
     }
 
     public void init() {
