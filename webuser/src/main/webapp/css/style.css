@@ -1,73 +1,53 @@
-/************ Header ************/
-.header {
-	position: fixed;
-	top: 0px;
-	margin-left: 0px;
-	margin-bottom: 130px;
-	width: 100%;
-	height: 55px;
-	border-top: solid 4px rgba(101, 228, 157, 0.7);
-	border-bottom: solid 1px #eaeaea;
-	background-color: rgba(255,255,255,0.7);
-	z-index: 500;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.header a { color: #999; }
-
-.search input{ margin-right: 10px; }
-
-
-/************ Login & Register ************/
-
-.form-login,
-.form-register {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-  margin-top: 140px;
-  margin-bottom: 180px;
+html,
+body {
+    height: 100%;
 }
 
-.form-login .form-login-heading,
-.form-register .form-register-heading,
-.form-login .checkbox {
-  margin-bottom: 10px;
+#my-container {
+    /*保证footer是相对于container位置绝对定位*/
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/
+    padding-bottom: 100px;
+    box-sizing: border-box;
 }
 
-.form-login .form-control,
-.form-register .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+.box {
+    margin: 10px 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    padding: 10px;
 }
 
-.form-login .form-control:focus,
-.form-register .form-control:focus { z-index: 2; }
+/* 底部 */
 
-.form-login input[type="text"],
-.form-register input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+#footer {
+    width: 100%;
+    height: 70px;
+    /* footer的高度一定要是固定值*/
+    position: absolute;
+  /*  因为border-top，因此bottom需要设置成1px*/
+    bottom: 1px;
+
+    z-index: 100;
+    padding: 10px 0px;
+    line-height: 20px;
+    color: #A9AFB7;
+    border-top: 1px solid #CCCCCC;
+    text-align: center;
 }
 
-.form-login input[type="password"],
-.form-register input[type="password"] {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+#footer a {
+    color: #737C8C;
 }
 
-.form-register input[type="password"] {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+#footer a:hover {
+    color: #333333;
+    text-decoration: underline;
 }
-
-.form-login .checkbox,
-.form-register button[type="submit"] { margin-top: 10px; }
-
-.form-login .checkbox { font-weight: normal; }
-

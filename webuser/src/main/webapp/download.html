@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-
-    <script src="js/config.js"></script>
-    <script type="text/javascript" src="js/user.login.var.js"></script>
-    <script type="text/javascript" src="js/user.login.js"></script>
+    <script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="js/about.js"></script>
     <title>登录</title>
 
 </head>
@@ -50,36 +48,44 @@
             </div>
         </div>
     </nav>
+
     <div class="container">
-        <div class="login-box center-block">
-            <div class="form-group loginbox-title">
-                <h4>用户登录</h4>
+        <div class="row box">
+            <div class="col-sm-6 col-xs-12">
+                <div class="instr">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">五子棋游戏</h3>
+                        </div>
+                        <div class="panel-body">
+                            <span>在线对战，人机对战。</span>
+                            <br/>
+                            <span>用户登录保存用户数据。</span>
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">安装说明</h3>
+                        </div>
+                        <div class="panel-body">
+                            <span>客户端基于Java开发</span>
+                            <br/>
+                            <span>安装游戏请安装JDK</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form class="form-login center-block" id="loginFrom">
-                <div class="form-group">
-                    <input name="account" class="form-control" type="text" placeholder="用户名"/>
-                </div>
-                <div class="form-group">
-                    <input name="password" class="form-control" type="password" placeholder="密码"/>
-                </div>
-                <div class="form-group">
-                    <button id="login_btn" class="btn btn-lg btn-primary btn-block">登录</button>
-                </div>
-            </form>
-            <div class="login-etc">
-                <div class="reg-div pull-left">
-                    <a href="register.html" class="link">找回密码</a>
-                </div>
-                <div class="find-div pull-right">
-                    还没有账号？请
-                    <a href="register.html" class="link">立即注册</a>
+            <div class="col-sm-6 col-xs-12">
+                <div class="box">
+                    <p class="text-center">扫描二维码下载</p>
+                    <div id="code" class="center-block"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="footer">
-        <div class="inline-block copyright">
+        <div class="inline-block">
             <p>
                 <a href="#">关于我们</a> |
                 <a href="#">微博</a>
@@ -88,10 +94,6 @@
         </div>
     </div>
 </div>
-<script>
-    loginFrom("#loginFrom", "#login_btn");
-    fromVar("#loginFrom");
-</script>
 </body>
 
 </html>

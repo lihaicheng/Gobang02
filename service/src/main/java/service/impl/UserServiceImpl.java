@@ -6,6 +6,7 @@ import dao.impl.LoginSidImpl;
 import dao.impl.UserDaoImpl;
 import entity.UserEntity;
 import service.UserService;
+import tool.CheckUtil;
 import tool.Constants;
 import tool.MD5Tools;
 
@@ -59,8 +60,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int alter(UserEntity user, String password) {
-        return 0;
+    public int alter(UserEntity newUser, String password) {
+        System.out.println("alter," + newUser.getUsername() + "," + password);
+        UserEntity oldUser = login(newUser.getUsername(), password);
+        if (oldUser != null) {//登录成功！
+            if (!CheckUtil.checkEmpty(newUser.getPhone())) {
+                oldUser.setPhone(newUser.getPhone());
+            }
+            if (!CheckUtil.checkEmpty(newUser.getEmail())) {
+                oldUser.setEmail(newUser.getEmail());
+            }
+            if (!CheckUtil.checkEmpty(newUser.getSign())) {
+                oldUser.setSign(newUser.getSign());
+            }
+            return userDao.alter(oldUser);
+        } else {
+            //密码错误
+            return Constants.Login_error;
+        }
     }
 
     @Override

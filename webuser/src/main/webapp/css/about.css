@@ -1,0 +1,16 @@
+.box {
+	margin: 10px 20px;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+#code table {
+	margin-top: 20px;
+	margin: auto;
+}
+
+.instr {
+	margin-top: 20px;
+	height: 300px;
+}

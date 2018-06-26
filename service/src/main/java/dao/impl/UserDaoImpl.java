@@ -75,7 +75,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int alter(UserEntity user) {
-        return 0;
+        init();
+        session.update(user);
+        try {
+            transaction.commit();
+            return Constants.Alter_success;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Constants.Alter_unknown_error;
     }
 
     @Override

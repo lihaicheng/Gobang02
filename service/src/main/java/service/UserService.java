@@ -49,10 +49,10 @@ public interface UserService {
     /**
      * 修改用户信息,需要验证原始密码
      *
-     * @param user
+     * @param newUser
      * @return
      */
-    public int alter(UserEntity user, String password);
+    public int alter(UserEntity newUser, String password);
 
     /**
      * 获得所有用户

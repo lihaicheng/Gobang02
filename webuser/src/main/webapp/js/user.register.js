@@ -17,6 +17,9 @@ function regAjax(from) {
             if (data.isReg) {//注册成功
                 $('#myModal').find("#title").text("注册成功！");
                 $('#myModal').find("#content").text("你已注册成功，注册信息已发送道破你的邮箱。");
+                $('#myModal').on('hide.bs.modal', function () {
+                    window.location.href = _settings.webUrl + _settings.url.htmlUserCenter;
+                });
                 $('#myModal').modal('show');
             } else {
                 $('#myModal').find("#title").text("注册失败！");

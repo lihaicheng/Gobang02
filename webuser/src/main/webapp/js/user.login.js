@@ -13,7 +13,7 @@ function alertBox(parent, tip, color) {
     parent.children(':first').before(box);
 }
 
-function submitLogin(from, submit) {
+function loginFrom(from, submit) {
     $(submit).click(function () {
         event.preventDefault();
         submit_disenable(this);

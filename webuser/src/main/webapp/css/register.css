@@ -1,9 +1,5 @@
 @charset "utf-8";
 /* track base Css */
-.container {
-    margin-top: 15px;
-}
-
 .red {
     color: red;
 }
