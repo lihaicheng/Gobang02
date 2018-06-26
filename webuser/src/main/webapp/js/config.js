@@ -1,7 +1,8 @@
 _settings = {
     regFrom: "#regFrom",
     webUrl: "http://localhost:8080/",
-    gobangDown: "download/gobang02.jar",
+    gobangDown: "http://t.cn/RrXswvP",
+    jdkDown:"http://down-www.newasp.net/pcdown/soft/yh/jre1.8x64.7z",
     url: {
         ajaxLogin: "service/webuser/login.action",
         ajaxReg: "service/webuser/register.action",

@@ -12,8 +12,12 @@ function getUser(user_div) {
                 user_div.find("#email").text(user.email);
                 user_div.find("#sign").text(user.sign);
             } else {
-                alert("登录失败");
-                window.location.href = _settings.webUrl + _settings.url.htmlLogin;
+                $('#myModal').find("#title").text("提示！");
+                $('#myModal').find("#content").text("自动登录失败，请先登录。");
+                $('#myModal').on('hide.bs.modal', function () {
+                    window.location.href = _settings.webUrl + _settings.url.htmlLogin;
+                });
+                $('#myModal').modal('show');
             }
         }
     });
@@ -56,3 +60,80 @@ function alertBox(parent, tip, color) {
     $("#warningTip").remove();
     parent.children(':first').before(box);
 }
+
+//自动登录用户
+function getUserBar() {
+    $.ajax({
+        type: "get",
+        url: _settings.webUrl + _settings.url.ajaxGetUser,
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            if (data.isLogin) {//登陆成功
+                var user = data.user;
+                $("#navbar-user").show();
+                $("#navbar-user").find(".user-bar").text(user.username);
+                $("#navbar-login").hide();
+            } else {
+                $("#navbar-user").hide();
+                $("#navbar-login").show();
+            }
+        }
+    });
+}
+
+$(function () {
+    getUserBar();
+    loadMyModel();
+    $("#loginOut").click(function () {
+        delCookie("username");
+        delCookie("SID");
+        console.log("注销用户");
+        window.location.href = window.location.href;
+    });
+
+});
+
+function loadMyModel() {
+    $.ajax({
+        type: "get",
+        url: "myModal.html",
+        dataType: "text",
+        success: function (data) {
+            $("#myModel-div").html(data);
+        }
+    });
+}
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=")
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1
+            c_end = document.cookie.indexOf(";", c_start)
+            if (c_end == -1) c_end = document.cookie.length
+            return unescape(document.cookie.substring(c_start, c_end))
+        }
+    }
+    return ""
+}
+
+//删除cookies
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";path=/";
+}
+
+//全局Ajax错误处理
+$(document).ajaxError(function (event, xhr, options, exc) {
+    /*错误信息处理*/
+    /*弹出jqXHR对象的信息*/
+    console.log(xhr.status);
+    console.log(xhr.readyState);
+    console.log(xhr.statusText);
+    console.log(exc);
+
+});

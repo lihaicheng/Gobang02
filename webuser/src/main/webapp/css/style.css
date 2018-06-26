@@ -32,7 +32,7 @@ body {
     height: 70px;
     /* footer的高度一定要是固定值*/
     position: absolute;
-  /*  因为border-top，因此bottom需要设置成1px*/
+    /*  因为border-top，因此bottom需要设置成1px*/
     bottom: 1px;
 
     z-index: 100;
@@ -50,4 +50,9 @@ body {
 #footer a:hover {
     color: #333333;
     text-decoration: underline;
+}
+
+.about-user {
+    line-height: 50px;
+    font-size: 18px;
 }
