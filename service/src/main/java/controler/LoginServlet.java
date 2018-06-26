@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/webUser/login.action", "/webUser/getUser.do"})
+@WebServlet(urlPatterns = {"/webuser/login.action", "/webuser/getUser.do"})
 public class LoginServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -25,9 +25,9 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlStr = req.getRequestURI();
         System.out.println("urlStr:" + urlStr);
-        if (urlStr.contains("webUser/login.action")) {
+        if (urlStr.contains("webuser/login.action")) {
             login(req, resp);
-        } else if (urlStr.contains("webUser/getUser.do")) {
+        } else if (urlStr.contains("webuser/getUser.do")) {
             getUser(req, resp);
         } else {
             resp.getWriter().println("请检查大小写！");

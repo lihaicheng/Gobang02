@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/webUser/register.action", "/webUser/regVer.do"})
+@WebServlet(urlPatterns = {"/webuser/register.action", "/webuser/regVer.do"})
 public class RegisterServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -28,9 +28,9 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlStr = req.getRequestURI();
         System.out.println("urlStr:" + urlStr);
-        if (urlStr.contains("webUser/register.action")) {
+        if (urlStr.contains("webuser/register.action")) {
             register(req, resp);
-        } else if (urlStr.contains("webUser/regVer.do")) {
+        } else if (urlStr.contains("webuser/regVer.do")) {
             regVer(req, resp);
         }
     }

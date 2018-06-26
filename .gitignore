@@ -11,4 +11,8 @@ settings.gradle
 
 #maven ignore
 src/main/webapp/WEB-INF/classes/
-*/target/
+*/target/*
+
+#不忽略编译后的包
+!/*/target/*.jar
+!/*/target/*.war

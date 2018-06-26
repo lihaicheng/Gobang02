@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/webUser/saveUser.action"})
+@WebServlet(urlPatterns = {"/webuser/saveUser.action"})
 public class UserSaveServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

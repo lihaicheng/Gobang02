@@ -3,12 +3,12 @@ _settings = {
     webUrl: "http://localhost:8080/",
     gobangDown: "download/gobang02.jar",
     url: {
-        ajaxLogin: "service/webUser/login.action",
-        ajaxReg: "service/webUser/register.action",
-        ajaxRegVer: "service/webUser/regVer.do",
-        ajaxGetUser: "service/webUser/getUser.do",
-        ajaxSaveUser: "service/webUser/saveUser.action",
-        htmlLogin: "webUser/login.html",
-        htmlUserCenter: "webUser/userCenter.html"
+        ajaxLogin: "service/webuser/login.action",
+        ajaxReg: "service/webuser/register.action",
+        ajaxRegVer: "service/webuser/regVer.do",
+        ajaxGetUser: "service/webuser/getUser.do",
+        ajaxSaveUser: "service/webuser/saveUser.action",
+        htmlLogin: "webuser/login.html",
+        htmlUserCenter: "webuser/userCenter.html"
     }
 };
