@@ -25,17 +25,8 @@
     border-bottom-left-radius: 0;
 }
 
-.radio,
-.checkbox {
-    display: block;
-    min-height: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-}
-
 .login-box {
-    width: 400px;
+    max-width: 400px;
     margin: 50px auto 100px auto;
     border: 1px solid #CCCCCC;
     border-radius: 3px;
@@ -63,6 +54,10 @@
     display: inline;
 }
 
-.login-etc {
-    height: 60px;
+.clear:after {
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
 }

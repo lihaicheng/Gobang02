@@ -1,6 +1,6 @@
 $(function () {
     getUserBar();
-    $("#loginOut").click(function () {
+    $(".loginOut").click(function () {
         loginOut();
     });
 });
