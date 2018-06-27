@@ -15,7 +15,8 @@ function getUser_center(user_div) {
                 user_div.find("#phoneNum").text(user.phone)
                 user_div.find("#email").text(user.email);
                 user_div.find("#sign").text(user.sign);
-                user_div.find("#reg_time").text(user.reg_time);
+                var time=moment(user.regTime).format('YYYY-MM-DD HH:mm:ss');;
+                user_div.find("#reg_time").text(time);
             } else {
                 showMyModal("提示！", "自动登录失败，请先登录。", function () {
                     window.location.href = _settings.webUrl + _settings.url.htmlLogin;
