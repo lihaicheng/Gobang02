@@ -1,6 +1,7 @@
 _settings = {
     regFrom: "#regFrom",
     webUrl: "http://localhost:8080/",
+   // webUrl: "http://gobang02.bzchao.com/",
     gobangDown: "http://t.cn/RrXswvP",
     jdkDown:"http://down-www.newasp.net/pcdown/soft/yh/jre1.8x64.7z",
     url: {

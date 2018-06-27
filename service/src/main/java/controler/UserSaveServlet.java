@@ -29,7 +29,7 @@ public class UserSaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlStr = req.getRequestURI();
         System.out.println("urlStr:" + urlStr);
-        if (urlStr.contains("webUser/saveUser.action")) {
+        if (urlStr.contains("webuser/saveUser.action")) {
             saveUser(req, resp);
         } else {
             resp.getWriter().println("请检查大小写！");
