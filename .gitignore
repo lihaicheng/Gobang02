@@ -13,6 +13,6 @@ settings.gradle
 src/main/webapp/WEB-INF/classes/
 */target/*
 
-#不忽略编译后的包
+#not jar
 !/*/target/*.jar
 !/*/target/*.war
