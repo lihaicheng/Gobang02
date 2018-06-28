@@ -43,6 +43,9 @@ function saveUser(user_div) {
             console.log(data);
             if (data.isSave) { //保存成功
                 alertBox(user_div, "保存成功", "success");
+                showMyModal("保存成功！", "OH，您的信息已成功保存。",function () {
+                    window.location.href = _settings.webUrl + _settings.url.htmlUserCenter;
+                });
             } else {
                 alertBox(user_div, "服务拒绝保存!<br/>修改信息请输入原密码！", "warning");
             }
