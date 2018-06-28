@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         } else if (urlStr.contains("webuser/getUser.do")) {
             getUser(req, resp);
         } else {
-            resp.getWriter().println("请检查大小写！");
+            resp.getWriter().println("Please check the case！"+urlStr);
         }
     }
 

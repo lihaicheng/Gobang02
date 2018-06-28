@@ -10,6 +10,7 @@ _settings = {
         ajaxRegVer: "service/webuser/regVer.do",
         ajaxGetUser: "service/webuser/getUser.do",
         ajaxSaveUser: "service/webuser/saveUser.action",
+        htmlIndex: "webuser/index.html",
         htmlLogin: "webuser/login.html",
         htmlUserCenter: "webuser/userCenter.html"
     }

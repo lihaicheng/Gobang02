@@ -175,6 +175,8 @@ public class MyJMenuBar extends JMenuBar {
                             "登录失败", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
+                System.out.println(userEntity.getUsername());
+                System.out.println(userEntity.getGrade());
                 int grade = userEntity.getGrade();
                 Player.my.setName(name);
                 Player.my.setGrade(grade);

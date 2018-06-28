@@ -42,6 +42,8 @@ function loadMyModal(modal_div) {
 
 //全局Ajax错误处理
 $(document).ajaxError(function (event, xhr, options, exc) {
+    showMyModal("网络错误！", "服务器响应错误,请检查网络，或联系网站管理员。");
+
     /*错误信息处理*/
     /*弹出jqXHR对象的信息*/
     console.log(xhr.status);

@@ -32,7 +32,7 @@ public class UserSaveServlet extends HttpServlet {
         if (urlStr.contains("webuser/saveUser.action")) {
             saveUser(req, resp);
         } else {
-            resp.getWriter().println("请检查大小写！");
+            resp.getWriter().println("Please check the case！" + urlStr);
         }
     }
 

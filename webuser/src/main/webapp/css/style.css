@@ -18,13 +18,6 @@ body {
     box-sizing: border-box;
 }
 
-.box {
-    margin: 10px 20px;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px;
-    padding: 10px;
-}
-
 /* 底部 */
 
 #footer {

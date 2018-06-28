@@ -18,7 +18,7 @@ function getUser_center(user_div) {
                 var time=moment(user.regTime).format('YYYY-MM-DD HH:mm:ss');;
                 user_div.find("#reg_time").text(time);
             } else {
-                showMyModal("提示！", "自动登录失败，请先登录。", function () {
+                showMyModal("提示！", "您未登录，无法进行此操作，请先登录。", function () {
                     window.location.href = _settings.webUrl + _settings.url.htmlLogin;
                 });
             }

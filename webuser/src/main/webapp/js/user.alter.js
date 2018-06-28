@@ -25,7 +25,7 @@ function getUser_alter(user_div) {
                 user_div.find("#email").val(user.email);
                 user_div.find("#sign").val(user.sign);
             } else {
-                showMyModal("提示！", "自动登录失败，请先登录。", function () {
+                showMyModal("提示！", "您未登录，无法进行此操作，请先登录。", function () {
                     window.location.href = _settings.webUrl + _settings.url.htmlLogin;
                 });
             }
