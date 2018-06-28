@@ -2,6 +2,8 @@ package com.service.impl;
 
 import com.entity.UserEntity;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.service.UserService;
 import com.tool.Constant;
 import com.tool.HttpTools;
@@ -25,11 +27,19 @@ public class UserServiceImpl implements UserService {
         map.put("password", password);
         try {
             String loginJson = HttpTools.doPost(Constant.WEB_API_login, map);
-            System.out.println("loginJson:" + loginJson);
-            user = gson.fromJson(loginJson, UserEntity.class);
-            if (user != null) {
-                userEntity = user;
-                isLogin = true;
+            System.out.println("登录结果，loginJson:" + loginJson);
+            JsonObject jsonObject = (JsonObject) new JsonParser().parse(loginJson);
+            isLogin = jsonObject.get("isLogin").getAsBoolean();
+            if (isLogin){//登录成功
+                JsonObject userObject = jsonObject.get("user").getAsJsonObject();
+                user = gson.fromJson(userObject, UserEntity.class);
+                if (user != null) {
+                    //数据库中可能为空，导致转换成int，会有空指针异常！
+                    if (user.getGrade() == null) {
+                        user.setGrade(100);
+                    }
+                    userEntity = user;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
