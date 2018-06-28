@@ -57,7 +57,6 @@ public class UserServiceImpl implements UserService {
             if (userEntity != null) {
                 userEntity.setPassword(null);
             }
-            userEntity.setPassword(null);
             return userEntity;
         }
         return null;
