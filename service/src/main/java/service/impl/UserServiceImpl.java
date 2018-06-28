@@ -31,9 +31,11 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         password = MD5Tools.MD5(password);
-        UserEntity userEntity= userDao.login(account, password);
-        userEntity.setPassword(null);
-        return  userEntity;
+        UserEntity userEntity = userDao.login(account, password);
+        if (userEntity != null) {
+            userEntity.setPassword(null);
+        }
+        return userEntity;
     }
 
     @Override
@@ -51,9 +53,12 @@ public class UserServiceImpl implements UserService {
         UserEntity user = getUser(account);
         System.out.println(SID + "," + user.getUid());
         if (user != null) {
-            UserEntity userEntity= loginSid.login(user.getUid(), SID);
+            UserEntity userEntity = loginSid.login(user.getUid(), SID);
+            if (userEntity != null) {
+                userEntity.setPassword(null);
+            }
             userEntity.setPassword(null);
-            return  userEntity;
+            return userEntity;
         }
         return null;
     }
