@@ -1,5 +1,10 @@
 # Gobang02
 ##webuser 用户WEB界面
+
+##相关技术
+jQuery+BootStrap+Ajax
+
+##代码统计
 Total Lines总计2000行
 Code Lines代码量1700行
 
