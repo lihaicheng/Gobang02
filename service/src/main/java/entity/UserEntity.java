@@ -5,7 +5,8 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "gobang02", catalog = "")
+@Table(name = "user")
+
 public class UserEntity {
 
     private int uid;
@@ -33,6 +34,7 @@ public class UserEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "uid")
     public int getUid() {
         return uid;
@@ -43,7 +45,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username",unique=true)
     public String getUsername() {
         return username;
     }
@@ -63,7 +65,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email",unique=true)
     public String getEmail() {
         return email;
     }
@@ -73,7 +75,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "phone")
+    @Column(name = "phone",unique=true)
     public String getPhone() {
         return phone;
     }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "login_sid", schema = "gobang02", catalog = "")
+@Table(name = "login_sid")
 public class LoginSidEntity {
     private Integer uid;
     private String sidMd5;
@@ -46,6 +46,7 @@ public class LoginSidEntity {
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;
