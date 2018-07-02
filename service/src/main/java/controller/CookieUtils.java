@@ -1,4 +1,4 @@
-package controler;
+package controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

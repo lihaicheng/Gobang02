@@ -1,4 +1,4 @@
-package controler;
+package controller;
 
 import com.google.gson.Gson;
 import entity.UserEntity;
@@ -76,6 +76,10 @@ public class LoginServlet extends HttpServlet {
 
     private void showSuccess(HttpServletRequest req, HttpServletResponse resp, UserEntity user) throws IOException {
         //登录成功，返回用户信息
+        if (user != null) {//屏蔽密码信息
+            user.setPassword(null);
+        }
+
         Map<String, Object> map = new HashMap<>();
         map.put("isLogin", true);
         map.put("SID", req.getSession().getId());
