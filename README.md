@@ -3,6 +3,12 @@
 
 BS/CS混合结构，三模块可独立编译，互不依赖。
 
+### 1、运行环境和所需工具
+* 编译器：IntelliJ IDEA
+* 项目构建工具：Maven
+* 数据库：Mysql
+* JDK版本：jdk1.8
+* Tomcat版本：Tomcat8.x
 
 ## client 客户端
  JavaAWT+JavaSwing+Okhttp3+Gson
