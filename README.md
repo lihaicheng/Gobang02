@@ -29,6 +29,8 @@ jQuery+Ajax+Bootstrap
 
 不涉及后端代码，通过ajax和后台交互，纯静态页面，可独立部署
 
+WEB前端预览：http://gobang02.bzchao.com
+
 
 # 代码统计
 Total Lines总计7000行
