@@ -1,7 +1,13 @@
-# Gobang02
+# Gobang02 版本v02
 五子棋游戏社区。成都工业学院课程设计-1506032-第八组
 
 BS/CS混合结构，三模块可独立编译，互不依赖。
+
+## Gobang v03版(正在构建)
+
+采用Spring + SpringMVC + MyBatis构架
+
+使用Redis缓存技术，shiro权限控制，RESTful构架风格，SSO单点登录，CROS跨域访问
 
 ### 1、运行环境和所需工具
 * 编译器：IntelliJ IDEA
