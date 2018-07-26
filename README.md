@@ -31,8 +31,8 @@ Servlet+Hibernate+MySQL
 
 
 ## webuser 用户界面
-jQuery+Ajax+Bootstrap
+Html+jQuery+Ajax+Bootstrap
 
-不涉及后端代码，通过ajax和后台交互，纯静态页面，可独立部署
+纯前端技术，不涉及后端代码，通过ajax和后台交互，可独立部署在静态Web服务器
 
 WEB前端预览：http://gobang02.bzchao.com
