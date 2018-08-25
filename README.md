@@ -6,7 +6,7 @@
 
 BS/CS混合结构，三模块可独立编译，互不依赖。
 
-## Gobang v03版(项目进行中)
+## Gobang v03版(项目已完成)
 
 采用Spring + SpringMVC + MyBatis构架
 
